@@ -1,13 +1,14 @@
 const newEl = (createEl) => document.createElement(createEl);
+
 const mainContainer = newEl("div");
 mainContainer.setAttribute("class", "mainContainer");
 document.body.appendChild(mainContainer);
 
-const formContainer = document.createElement("div");
+const formContainer = newEl("div");
 formContainer.setAttribute("class", "formContainer");
 mainContainer.appendChild(formContainer);
 
-const form = document.createElement("form");
+const form = newEl("form");
 
 // set attributes for the form
 form.setAttribute("method", "POST");
@@ -15,112 +16,165 @@ form.setAttribute("action", "/submit");
 form.setAttribute("id", "myForm");
 formContainer.appendChild(form);
 
-const inputName = document.createElement("div");
+const inputName = newEl("div");
 inputName.setAttribute("class", "inputName");
 form.appendChild(inputName);
 
-const inputEmail = document.createElement("div");
+const inputEmail = newEl("div");
 inputEmail.setAttribute("class", "inputEmail");
 form.appendChild(inputEmail);
 
-const inputPassword = document.createElement("div");
+const inputPassword = newEl("div");
 inputPassword.setAttribute("class", "inputPassword");
 form.appendChild(inputPassword);
 
 // Create a name label element
-const nameLabel = document.createElement("label");
+const nameLabel = newEl("label");
 nameLabel.textContent = "Name";
 nameLabel.setAttribute("for", "name");
 inputName.appendChild(nameLabel);
 
-const userIcon = document.createElement("i");
+const inputIcons = newEl("div");
+inputIcons.setAttribute("class", "inputIcons");
+inputName.appendChild(inputIcons);
+
+const userIcon = newEl("i");
 userIcon.classList.add("fas", "fa-user");
-inputName.appendChild(userIcon);
+inputIcons.appendChild(userIcon);
 // Create a name input element for name
-const nameInput = document.createElement("input");
+const nameInput = newEl("input");
 nameInput.setAttribute("type", "text");
 nameInput.setAttribute("id", "userName");
 nameInput.setAttribute("name", "name");
 nameInput.required;
 nameInput.setAttribute("placeholder", "Starnslaus");
-inputName.appendChild(nameInput);
+inputIcons.appendChild(nameInput);
 
-const errorIcon = document.createElement("i");
+const errorIcon = newEl("i");
 errorIcon.classList.add("fas", "fa-circle-exclamation");
-inputName.appendChild(errorIcon);
+inputIcons.appendChild(errorIcon);
 
-const successIcon = document.createElement("i");
+const successIcon = newEl("i");
 successIcon.classList.add("fas", "fa-circle-check");
-inputName.appendChild(successIcon);
+inputIcons.appendChild(successIcon);
 
-const nameError = document.createElement("div");
-nameError.setAttribute("class", "nameError");
-nameError.innerHTML = "Input Name please";
+const nameError = newEl("div");
+
 inputName.appendChild(nameError);
 
 // Create an email label element
-const emailLabel = document.createElement("label");
+const emailLabel = newEl("label");
 emailLabel.textContent = "Email";
 emailLabel.setAttribute("for", "email");
 inputEmail.appendChild(emailLabel);
 
-const envelopeIcon = document.createElement("i");
+const email_Icons = newEl("div");
+email_Icons.setAttribute("class", "email_Icons");
+inputEmail.appendChild(email_Icons);
+
+const envelopeIcon = newEl("i");
 envelopeIcon.classList.add("far", "fa-envelope");
-inputEmail.appendChild(envelopeIcon);
+email_Icons.appendChild(envelopeIcon);
 
 // Create an email input element for name
-const emailInput = document.createElement("input");
+const emailInput = newEl("input");
 emailInput.setAttribute("type", "email");
 emailInput.setAttribute("id", "userEmail");
 emailInput.setAttribute("name", "email");
 emailInput.setAttribute("placeholder", "name@gmail.com");
-inputEmail.appendChild(emailInput);
+email_Icons.appendChild(emailInput);
 
-const errorIcon2 = document.createElement("i");
+const errorIcon2 = newEl("i");
 errorIcon2.classList.add("fas", "fa-circle-exclamation");
-inputEmail.appendChild(errorIcon2);
+email_Icons.appendChild(errorIcon2);
 
-const successIcon2 = document.createElement("i");
+const successIcon2 = newEl("i");
 successIcon2.classList.add("fas", "fa-circle-check");
-inputEmail.appendChild(successIcon2);
+email_Icons.appendChild(successIcon2);
 
-const emailError = document.createElement("div");
-emailError.setAttribute("class", "emailError");
-emailError.innerHTML = "Input valid email please";
+const emailError = newEl("div");
+
 inputEmail.appendChild(emailError);
 
 // Create a password label element
-const passwordLabel = document.createElement("label");
+const passwordLabel = newEl("label");
 passwordLabel.textContent = "Password";
 emailLabel.setAttribute("for", "password");
 inputPassword.appendChild(passwordLabel);
 
-const lockIcon = document.createElement("i");
+const password_Icons = newEl("div");
+password_Icons.setAttribute("class", "password_Icons");
+inputPassword.appendChild(password_Icons);
+
+const lockIcon = newEl("i");
 lockIcon.classList.add("fas", "fa-lock");
-inputPassword.appendChild(lockIcon);
+password_Icons.appendChild(lockIcon);
 
 // Create a password input element for name
-const passwordInput = document.createElement("input");
+const passwordInput = newEl("input");
 passwordInput.setAttribute("type", "password");
 passwordInput.setAttribute("id", "password");
 passwordInput.setAttribute("name", "password");
-inputPassword.appendChild(passwordInput);
+passwordInput.setAttribute("placeholder", "password");
+password_Icons.appendChild(passwordInput);
 
-const errorIcon3 = document.createElement("i");
+const errorIcon3 = newEl("i");
 errorIcon3.classList.add("fas", "fa-circle-exclamation");
-inputPassword.appendChild(errorIcon3);
+password_Icons.appendChild(errorIcon3);
 
-const successIcon3 = document.createElement("i");
+const successIcon3 = newEl("i");
 successIcon3.classList.add("fas", "fa-circle-check");
-inputPassword.appendChild(successIcon3);
+password_Icons.appendChild(successIcon3);
 
-const passwordError = document.createElement("div");
-passwordError.setAttribute("class", "passwordError");
-passwordError.innerHTML = "Input password please";
+const passwordError = newEl("div");
+
 inputPassword.appendChild(passwordError);
 
 // Create a submit button
-const submitButton = document.createElement("button");
+const submitButton = newEl("button");
 submitButton.setAttribute("type", "submit");
 submitButton.textContent = "Submit";
 form.appendChild(submitButton);
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  //create the classes by click
+
+  if (nameInput.value.trim() === "") {
+    successIcon.style.opacity = "0";
+    nameError.setAttribute("class", "nameError");
+    nameError.innerHTML = "Input Name please";
+    errorIcon.style.opacity = "1";
+  } else {
+    errorIcon.style.opacity = "0";
+    successIcon.style.opacity = "1";
+    nameError.removeAttribute("class");
+    nameError.innerHTML = "";
+  }
+  if (emailInput.value.trim() === "") {
+    successIcon2.style.opacity = "0";
+    errorIcon2.style.opacity = "1";
+    emailError.setAttribute("class", "emailError");
+    emailError.innerHTML = "Input valid email please";
+  } else {
+    errorIcon2.style.opacity = "0";
+    successIcon2.style.opacity = "1";
+    emailError.removeAttribute("class");
+    emailError.innerHTML = "";
+  }
+  if (passwordInput.value.trim() === "") {
+    successIcon3.style.opacity = "0";
+    errorIcon3.style.opacity = "1";
+    passwordError.setAttribute("class", "passwordError");
+    passwordError.innerHTML = "Input password please";
+  } else {
+    errorIcon3.style.opacity = "0";
+    successIcon3.style.opacity = "1";
+    passwordError.removeAttribute("class");
+    passwordError.innerHTML = "";
+  }
+
+  // generate the HTML whenever there is an error
+});
+
+let error_message = () => {};

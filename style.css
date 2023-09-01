@@ -12,6 +12,7 @@
     position: relative;
 }
 
+
 .mainContainer {
     background: blue;
     width: 100%;
@@ -43,7 +44,7 @@ form {
     padding: 1px;
     margin-top: 3px;
     background: white;
-    text-align: center;
+    /* text-align: center; */
 }
 
 form label {
@@ -59,9 +60,9 @@ form input::placeholder {
 }
 
 form div input {
-    /* width: 100%; */
-    /* max-width: 600px; */
-    /* flex: 1; */
+    width: 100%;
+    max-width: 300px;
+    flex: 1;
     height: 45px;
     border: none;
     outline: none;
@@ -85,15 +86,29 @@ form div .fa-circle-check {
     color: green;
 }
 
+form div .fa-circle-exclamation {
+    color: red;
+}
+
+
+.inputIcons, .email_Icons, .password_Icons {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    /* background: green; */
+    /* padding: 8px; */
+}
+
 form div .fa-envelope, form div .fa-user, form div .fa-lock {
-    top: 42%;
-    left: 15px;
+    position: absolute;
+    top: 26%;
+    left: 4px;
 }
 
 form div .fa-circle-exclamation, form div .fa-circle-check {
-    color: red;
-    left: 85%;
-    top: 42%;
+    /* color: red; */
+    left: 89%;
+    top: 27%;
     opacity: 0;
 }
 
