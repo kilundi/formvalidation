@@ -4,9 +4,17 @@ const mainContainer = newEl("div");
 mainContainer.setAttribute("class", "mainContainer");
 document.body.appendChild(mainContainer);
 
+const masterContainer = newEl("div");
+masterContainer.setAttribute("class", "masterContainer");
+mainContainer.appendChild(masterContainer);
+
+const socialContainer = newEl("div");
+socialContainer.setAttribute("class", "socialContainer");
+masterContainer.appendChild(socialContainer);
+
 const formContainer = newEl("div");
 formContainer.setAttribute("class", "formContainer");
-mainContainer.appendChild(formContainer);
+masterContainer.appendChild(formContainer);
 
 const form = newEl("form");
 
@@ -15,6 +23,20 @@ form.setAttribute("method", "POST");
 form.setAttribute("action", "/submit");
 form.setAttribute("id", "myForm");
 formContainer.appendChild(form);
+
+const buttonDiv = newEl("div");
+buttonDiv.setAttribute("id", "buttonDiv");
+buttonDiv.innerHTML = `<button id="withGoogle">
+<img src="images/icon-google.svg" alt="Google logo" id="googleIcon"> Sign Up
+</button>
+<button id="withFacebook" >  <img src="images/facebook-blue.svg" alt="facebook" id="facebookIcon" > Sign Up</button>
+`;
+form.appendChild(buttonDiv);
+
+const orDiv = newEl("div");
+orDiv.setAttribute("id", "orDiv");
+orDiv.innerText = `Or `;
+form.appendChild(orDiv);
 
 const inputName = newEl("div");
 inputName.setAttribute("class", "inputName");
@@ -47,7 +69,7 @@ nameInput.setAttribute("type", "text");
 nameInput.setAttribute("id", "userName");
 nameInput.setAttribute("name", "name");
 nameInput.required;
-nameInput.setAttribute("placeholder", "Starnslaus");
+nameInput.setAttribute("placeholder", "Enter your Name");
 inputIcons.appendChild(nameInput);
 
 const errorIcon = newEl("i");
@@ -81,7 +103,7 @@ const emailInput = newEl("input");
 emailInput.setAttribute("type", "email");
 emailInput.setAttribute("id", "userEmail");
 emailInput.setAttribute("name", "email");
-emailInput.setAttribute("placeholder", "name@gmail.com");
+emailInput.setAttribute("placeholder", "Enter your Email");
 email_Icons.appendChild(emailInput);
 
 const errorIcon2 = newEl("i");
@@ -115,7 +137,7 @@ const passwordInput = newEl("input");
 passwordInput.setAttribute("type", "password");
 passwordInput.setAttribute("id", "password");
 passwordInput.setAttribute("name", "password");
-passwordInput.setAttribute("placeholder", "password");
+passwordInput.setAttribute("placeholder", "Enter your Password");
 password_Icons.appendChild(passwordInput);
 
 const errorIcon3 = newEl("i");
@@ -127,7 +149,6 @@ successIcon3.classList.add("fas", "fa-circle-check");
 password_Icons.appendChild(successIcon3);
 
 const passwordError = newEl("div");
-
 inputPassword.appendChild(passwordError);
 
 // Create a submit button
