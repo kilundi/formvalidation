@@ -18,6 +18,15 @@
     text-align: center;
 }
 
+#errorBox, .errorPassword {
+    color: red;
+    width: 100%;
+    /* background-color: white; */
+    font-weight: bold;
+    padding: 0 4px;
+
+}
+
 .wrapperContainer {
     width: fit-content;
     /* background: purple; */
@@ -65,12 +74,12 @@
     box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #ffffff73;
 }
 
-.errorPassword {
-    /* background: red; */
+/* .errorPassword {
+    
     color: red;
     width: 100%;
     padding: 8px;
-}
+} */
 
 .inputEmail i, .inputName i, .inputPassword i, .inputPassConfirm i {
     position: absolute;

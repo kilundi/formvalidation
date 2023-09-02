@@ -11,7 +11,9 @@ mainContainer.append(wrapperContainer);
 
 const title = newEl("div");
 title.setAttribute("class", "title");
-title.innerHTML = `<h1>Register Now</h1>`;
+title.innerHTML = `<h1>Register Now</h1>
+
+`;
 wrapperContainer.append(title);
 
 const form = newEl("form");
@@ -20,6 +22,10 @@ form.setAttribute("id", "registerForm");
 form.setAttribute("method", "POST");
 form.setAttribute("action", "/submit");
 wrapperContainer.append(form);
+
+form.innerHTML = `<div id="errorBox"></div>`;
+
+const errorMessage = document.querySelector("#errorBox");
 
 // Create the input name element
 const inputName = newEl("div");
@@ -87,12 +93,12 @@ userName.placeholder = "Enter your Name";
 inputName.appendChild(userName);
 
 const errorIcon = newEl("i");
-errorIcon.classList.add("fa-solid", "fa-circle-exclamation");
+errorIcon.classList.add("fa-solid", "fa-circle-exclamation", "js-reset");
 inputName.appendChild(errorIcon);
 
 // Create the success icon element
 const successIcon = newEl("i");
-successIcon.classList.add("fas", "fa-circle-check");
+successIcon.classList.add("fas", "fa-circle-check", "js-reset");
 inputName.appendChild(successIcon);
 
 // Create the envelope icon element
@@ -110,12 +116,12 @@ inputEmail.appendChild(userEmail);
 
 // Create the error icon element for email
 const errorIcon2 = newEl("i");
-errorIcon2.classList.add("fas", "fa-circle-exclamation");
+errorIcon2.classList.add("fas", "fa-circle-exclamation", "js-reset");
 inputEmail.appendChild(errorIcon2);
 
 // Create the success icon element for email
 const successIcon2 = newEl("i");
-successIcon2.classList.add("fas", "fa-circle-check");
+successIcon2.classList.add("fas", "fa-circle-check", "js-reset");
 inputEmail.appendChild(successIcon2);
 
 // Create the lock icon element
@@ -134,12 +140,12 @@ inputPassword.appendChild(password);
 
 // Create the error icon element for password
 const errorIcon3 = newEl("i");
-errorIcon3.classList.add("fas", "fa-circle-exclamation");
+errorIcon3.classList.add("fas", "fa-circle-exclamation", "js-reset");
 inputPassword.appendChild(errorIcon3);
 
 // Create the success icon element for password
 const successIcon3 = newEl("i");
-successIcon3.classList.add("fas", "fa-circle-check");
+successIcon3.classList.add("fas", "fa-circle-check", "js-reset");
 inputPassword.appendChild(successIcon3);
 
 // Create the lock icon element
@@ -157,12 +163,12 @@ inputPassConfirm.appendChild(passwordConfirm);
 
 // Create the error icon element for password
 const errorIcon4 = newEl("i");
-errorIcon4.classList.add("fas", "fa-circle-exclamation");
+errorIcon4.classList.add("fas", "fa-circle-exclamation", "js-reset");
 inputPassConfirm.appendChild(errorIcon4);
 
 // Create the success icon element for password
 const successIcon4 = newEl("i");
-successIcon4.classList.add("fas", "fa-circle-check");
+successIcon4.classList.add("fas", "fa-circle-check", "js-reset");
 inputPassConfirm.appendChild(successIcon4);
 
 const selectElement = document.querySelector(".userAdmin");
@@ -170,73 +176,67 @@ const userNameInput = document.querySelector("#userName");
 const userEmailInput = document.querySelector("#userEmail");
 const passWordInput = document.querySelector("#password");
 const confirmPassWordInput = document.querySelector("#passwordConfirm");
+// Function to handle input field validation and error display
+function validateInput(inputElement, errorIcon, successIcon, errorMessage) {
+  const inputValue = inputElement.value.trim();
+  if (inputValue === "") {
+    errorIcon.style.opacity = "1";
+    successIcon.style.opacity = "0";
+    throw new Error(errorMessage);
+  } else {
+    errorIcon.style.opacity = "0";
+    successIcon.style.opacity = "1";
+  }
+}
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   try {
-    if (userName.value.trim() === "") {
-      // nameError.setAttribute("class", "nameError");
-      // nameError.innerHTML = "Input Name please";
-      errorIcon.style.opacity = "1";
-      // userName.required = "required";
-      successIcon.style.opacity = "0";
-      throw new Error("This is an error.");
-    } else {
-      errorIcon.style.opacity = "0";
-      successIcon.style.opacity = "1";
-      // nameError.removeAttribute("class");
-      // nameError.innerHTML = "";
-    }
-    if (userEmail.value.trim() === "") {
-      errorIcon2.style.opacity = "1";
-      // userEmail.required = "required";
-      successIcon2.style.opacity = "0";
-      // emailError.setAttribute("class", "emailError");
-      // emailError.innerHTML = "Input valid email please";
-      throw new Error("This is an error.");
-    } else {
-      errorIcon2.style.opacity = "0";
-      successIcon2.style.opacity = "1";
-      // emailError.removeAttribute("class");
-      // emailError.innerHTML = "";
-    }
-    if (password.value.trim() === "") {
-      errorIcon3.style.opacity = "1";
-      // password.required = "required";
-      successIcon3.style.opacity = "0";
-      // passwordError.setAttribute("class", "passwordError");
-      // passwordError.innerHTML = "Input password please";
-      throw new Error("This is an error.");
-    } else {
-      errorIcon3.style.opacity = "0";
-      successIcon3.style.opacity = "1";
-      // passwordError.removeAttribute("class");
-      // passwordError.innerHTML = "";
-    }
-    if (passwordConfirm.value.trim() === "") {
-      errorIcon4.style.opacity = "1";
-      // passwordConfirm.required = "required";
+    // Validate user name
+    validateInput(userName, errorIcon, successIcon, "Please input your name.");
 
-      successIcon4.style.opacity = "0";
-      // passwordError.setAttribute("class", "passwordError");
-      // passwordError.innerHTML = "Input password please";
-      throw new Error("This is an error.");
-    } else if (passwordConfirm.value.trim() !== password.value.trim()) {
+    // Validate user email
+    validateInput(
+      userEmail,
+      errorIcon2,
+      successIcon2,
+      "Please input a valid email."
+    );
+
+    // Validate password
+    validateInput(
+      password,
+      errorIcon3,
+      successIcon3,
+      "Please input a password."
+    );
+
+    // Validate password confirmation
+    validateInput(
+      passwordConfirm,
+      errorIcon4,
+      successIcon4,
+      "Please confirm your password."
+    );
+
+    // Additional logic for password matching
+    if (passwordConfirm.value.trim() !== password.value.trim()) {
       errorPassword.classList.add("errorPassword");
-      errorPassword.textContent = "Password not matched!";
-      console.log("no password match");
+      // errorPassword.textContent = "Password confirmation does not match.";
+      // console.log("No password match");
       successIcon4.style.opacity = "0";
-      errorIcon4.style.opacity = "1";
-      throw new Error("This is an error.");
+      // errorIcon4.style.opacity = "1";
+      throw new Error("Password confirmation does not match.");
     } else {
+      errorMessage.innerText = "";
+      errorMessage.removeAttribute("id");
       errorPassword.removeAttribute("class");
       errorPassword.textContent = "";
       errorIcon4.style.opacity = "0";
       successIcon4.style.opacity = "1";
-      // passwordError.removeAttribute("class");
-      // passwordError.innerHTML = "";
     }
 
+    // Log form values
     const selectedValue = selectElement.value;
     console.log(selectedValue);
 
@@ -251,7 +251,16 @@ form.addEventListener("submit", (e) => {
 
     const confirmPassWordInputValue = confirmPassWordInput.value;
     console.log(confirmPassWordInputValue);
+    userName.value = "";
+    userEmail.value = "";
+    password.value = "";
+    passwordConfirm.value = "";
+    // selectElement.value = "";
+    // const opacityReset = document.querySelector(".js-reset");
+    // opacityReset.style.opacity = "0";
   } catch (error) {
-    console.error("Caught an error:", error.message);
+    errorMessage.innerText = `${error.message}`;
+    errorPassword.textContent = `${error.message}`;
+    // console.error("Caught an error:", error.message);
   }
 });

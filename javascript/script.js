@@ -188,40 +188,47 @@ form.appendChild(signUpDiv);
 // Add event listener for form submission
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  if (nameInput.value.trim() === "") {
-    successIcon.style.opacity = "0";
-    nameError.setAttribute("class", "nameError");
-    nameError.innerHTML = "Input Name please";
-    errorIcon.style.opacity = "1";
-  } else {
-    errorIcon.style.opacity = "0";
-    successIcon.style.opacity = "1";
-    console.log(nameInput.value);
-    nameError.removeAttribute("class");
-    nameError.innerHTML = "";
-  }
-  if (emailInput.value.trim() === "") {
-    successIcon2.style.opacity = "0";
-    errorIcon2.style.opacity = "1";
-    emailError.setAttribute("class", "emailError");
-    emailError.innerHTML = "Input valid email please";
-  } else {
-    errorIcon2.style.opacity = "0";
-    successIcon2.style.opacity = "1";
-    console.log(emailInput.value);
-    emailError.removeAttribute("class");
-    emailError.innerHTML = "";
-  }
-  if (passwordInput.value.trim() === "") {
-    successIcon3.style.opacity = "0";
-    errorIcon3.style.opacity = "1";
-    passwordError.setAttribute("class", "passwordError");
-    passwordError.innerHTML = "Input password please";
-  } else {
-    errorIcon3.style.opacity = "0";
-    successIcon3.style.opacity = "1";
-    console.log(passwordInput.value);
-    passwordError.removeAttribute("class");
-    passwordError.innerHTML = "";
+  try {
+    if (nameInput.value.trim() === "") {
+      successIcon.style.opacity = "0";
+      nameError.setAttribute("class", "nameError");
+      nameError.innerHTML = "Input Name please";
+      errorIcon.style.opacity = "1";
+      throw new Error();
+    } else {
+      errorIcon.style.opacity = "0";
+      successIcon.style.opacity = "1";
+      console.log(nameInput.value);
+      nameError.removeAttribute("class");
+      nameError.innerHTML = "";
+    }
+    if (emailInput.value.trim() === "") {
+      successIcon2.style.opacity = "0";
+      errorIcon2.style.opacity = "1";
+      emailError.setAttribute("class", "emailError");
+      emailError.innerHTML = "Input valid email please";
+      throw new Error();
+    } else {
+      errorIcon2.style.opacity = "0";
+      successIcon2.style.opacity = "1";
+      console.log(emailInput.value);
+      emailError.removeAttribute("class");
+      emailError.innerHTML = "";
+    }
+    if (passwordInput.value.trim() === "") {
+      successIcon3.style.opacity = "0";
+      errorIcon3.style.opacity = "1";
+      passwordError.setAttribute("class", "passwordError");
+      passwordError.innerHTML = "Input password please";
+      throw new Error();
+    } else {
+      errorIcon3.style.opacity = "0";
+      successIcon3.style.opacity = "1";
+      console.log(passwordInput.value);
+      passwordError.removeAttribute("class");
+      passwordError.innerHTML = "";
+    }
+  } catch (error) {
+    console.error(`Caught error ${error}`);
   }
 });
