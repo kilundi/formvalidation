@@ -239,6 +239,6 @@ form.addEventListener("submit", (e) => {
     console.error(`Caught error ${error}`);
   }
   //link to webpage
-  const toUserPage = "userPage.html";
-  window.location.href = toUserPage;
+  // const toUserPage = "userPage.html";
+  // window.location.href = toUserPage;
 });

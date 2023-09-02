@@ -274,6 +274,6 @@ form.addEventListener("submit", (e) => {
     // errorPassword.textContent = `${error.message}`;
     // console.error("Caught an error:", error.message);
   }
-  const toLoginPage = "index.html";
-  window.location.href = toLoginPage;
+  // const toLoginPage = "index.html";
+  // window.location.href = toLoginPage;
 });
