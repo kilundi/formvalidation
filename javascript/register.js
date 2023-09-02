@@ -21,6 +21,7 @@ form.setAttribute("id", "registerForm");
 // form.addEventListener("submit", registerUser, false);
 form.setAttribute("method", "POST");
 form.setAttribute("action", "/submit");
+// form.setAttribute("onsubmit", "refreshPage()");
 wrapperContainer.append(form);
 
 form.innerHTML = `<div id="errorBox"></div>`;
@@ -71,6 +72,7 @@ userAdmin.appendChild(optio2);
 const registerBtn = newEl("button");
 registerBtn.setAttribute("class", "registerBtn");
 registerBtn.setAttribute("type", "submit");
+registerBtn.setAttribute("value", "Submit");
 registerBtn.innerHTML = `Register now`;
 buttonAndSelect.appendChild(registerBtn);
 
@@ -189,6 +191,9 @@ function validateInput(inputElement, errorIcon, successIcon, errorMessage) {
   }
 }
 
+// const opacityReset = document.querySelector(".js-reset");
+// opacityReset.style.color = "blue";
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   try {
@@ -225,15 +230,15 @@ form.addEventListener("submit", (e) => {
       // errorPassword.textContent = "Password confirmation does not match.";
       // console.log("No password match");
       successIcon4.style.opacity = "0";
-      // errorIcon4.style.opacity = "1";
+      errorIcon4.style.opacity = "1";
       throw new Error("Password confirmation does not match.");
     } else {
       errorMessage.innerText = "";
       errorMessage.removeAttribute("id");
       errorPassword.removeAttribute("class");
       errorPassword.textContent = "";
-      errorIcon4.style.opacity = "0";
-      successIcon4.style.opacity = "1";
+      // errorIcon4.style.opacity = "0";
+      // successIcon4.style.opacity = "1";
     }
 
     // Log form values
@@ -254,13 +259,21 @@ form.addEventListener("submit", (e) => {
     userName.value = "";
     userEmail.value = "";
     password.value = "";
+    // alert("");
     passwordConfirm.value = "";
+    errorMessage.innerHTML = `<div id="success" >Registered successfully</div>`;
+    setTimeout(() => {
+      location.reload();
+    }, 2000);
+
     // selectElement.value = "";
     // const opacityReset = document.querySelector(".js-reset");
     // opacityReset.style.opacity = "0";
   } catch (error) {
     errorMessage.innerText = `${error.message}`;
-    errorPassword.textContent = `${error.message}`;
+    // errorPassword.textContent = `${error.message}`;
     // console.error("Caught an error:", error.message);
   }
+  const toLoginPage = "index.html";
+  window.location.href = toLoginPage;
 });

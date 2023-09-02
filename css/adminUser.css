@@ -7,14 +7,21 @@
 .mainContainer {
     width: 100%;
     min-height: 100vh;
-    background: blue;
+    background: url(/images/1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .wrapperContainer {
-    background: purple;
+    /* background: purple; */
+    background: #dde1e7;
+    border-radius: .5rem;
+    padding: 1rem;
     display: flex;
     justify-content: center;
     flex-direction: column;

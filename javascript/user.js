@@ -9,7 +9,7 @@ wrapperContainer.classList.add("wrapperContainer");
 mainContainer.appendChild(wrapperContainer);
 wrapperContainer.innerHTML = `
 <p>Hi, User</p>
-<h2>Welcome USER NAME </h2>
+<h2 id="h2">Welcome USER NAME </h2>
 <div>This is User Page</div>
 <div>
     <button>Register</button>
@@ -18,3 +18,5 @@ wrapperContainer.innerHTML = `
 </div>
 
 `;
+const h2Content = document.querySelector("#h2");
+// h2Content.innerHTML = "hello";

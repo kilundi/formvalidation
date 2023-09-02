@@ -19,9 +19,15 @@
 }
 
 .mainContainer {
+
     background: #dde1e7;
+    /* background: black; */
+    /* background: url(/images/1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; */
     width: 100%;
-    min-height: 100vh;
+    min-height: 200vh;
     display: flex;
     justify-content: center;
     align-items: center;

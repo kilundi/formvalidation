@@ -9,6 +9,10 @@
     min-height: 100vh;
     /* background: blue; */
     background: #dde1e7;
+    /*  background: url(/images/1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,6 +20,10 @@
 
 .title h1 {
     text-align: center;
+}
+
+#success {
+    color: green;
 }
 
 #errorBox, .errorPassword {

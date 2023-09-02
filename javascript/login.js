@@ -182,7 +182,7 @@ submitButtonDiv.appendChild(submitButton);
 
 const signUpDiv = newEl("div");
 signUpDiv.setAttribute("class", "signUpDiv");
-signUpDiv.innerHTML = `<p> Not a member? <a href="signUp.html" id="signUpLink" >Register now.</a> </p>`;
+signUpDiv.innerHTML = `<p> Not a member? <a href="register.html" id="signUpLink" >Register now.</a> </p>`;
 form.appendChild(signUpDiv);
 
 // Add event listener for form submission
@@ -198,7 +198,7 @@ form.addEventListener("submit", (e) => {
     } else {
       errorIcon.style.opacity = "0";
       successIcon.style.opacity = "1";
-      console.log(nameInput.value);
+
       nameError.removeAttribute("class");
       nameError.innerHTML = "";
     }
@@ -211,7 +211,7 @@ form.addEventListener("submit", (e) => {
     } else {
       errorIcon2.style.opacity = "0";
       successIcon2.style.opacity = "1";
-      console.log(emailInput.value);
+
       emailError.removeAttribute("class");
       emailError.innerHTML = "";
     }
@@ -224,11 +224,21 @@ form.addEventListener("submit", (e) => {
     } else {
       errorIcon3.style.opacity = "0";
       successIcon3.style.opacity = "1";
-      console.log(passwordInput.value);
+
       passwordError.removeAttribute("class");
       passwordError.innerHTML = "";
     }
+    console.log(nameInput.value);
+    console.log(emailInput.value);
+    console.log(passwordInput.value);
+
+    /*  setTimeout(() => {
+      location.reload();
+    }, 2000); */
   } catch (error) {
     console.error(`Caught error ${error}`);
   }
+  //link to webpage
+  const toUserPage = "userPage.html";
+  window.location.href = toUserPage;
 });
