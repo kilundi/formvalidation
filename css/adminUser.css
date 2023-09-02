@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.mainContainer {
+    width: 100%;
+    min-height: 100vh;
+    background: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapperContainer {
+    background: purple;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+
+}
+
+.helloDiv, .welcomeDiv, .pageDiv, .buttonDiv {
+    background: green;
+}

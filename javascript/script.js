@@ -164,6 +164,11 @@ password_Icons.appendChild(successIcon3);
 const passwordError = newEl("div");
 inputPassword.appendChild(passwordError);
 
+const forgotPassDiv = newEl("div");
+forgotPassDiv.setAttribute("class", "forgotPassDiv");
+forgotPassDiv.innerHTML = `<a href="reset.html" id="resetPassLink" >Forgot Password?</a>`;
+form.appendChild(forgotPassDiv);
+
 // Create the submit button div element
 const submitButtonDiv = newEl("div");
 submitButtonDiv.setAttribute("class", "submitButtonDiv");
@@ -174,6 +179,11 @@ const submitButton = newEl("button");
 submitButton.setAttribute("type", "submit");
 submitButton.textContent = "Submit";
 submitButtonDiv.appendChild(submitButton);
+
+const signUpDiv = newEl("div");
+signUpDiv.setAttribute("class", "signUpDiv");
+signUpDiv.innerHTML = `<p> Not a member? <a href="signUp.html" id="signUpLink" >Register now.</a> </p>`;
+form.appendChild(signUpDiv);
 
 // Add event listener for form submission
 form.addEventListener("submit", (e) => {
@@ -186,6 +196,7 @@ form.addEventListener("submit", (e) => {
   } else {
     errorIcon.style.opacity = "0";
     successIcon.style.opacity = "1";
+    console.log(nameInput.value);
     nameError.removeAttribute("class");
     nameError.innerHTML = "";
   }
@@ -197,6 +208,7 @@ form.addEventListener("submit", (e) => {
   } else {
     errorIcon2.style.opacity = "0";
     successIcon2.style.opacity = "1";
+    console.log(emailInput.value);
     emailError.removeAttribute("class");
     emailError.innerHTML = "";
   }
@@ -208,6 +220,7 @@ form.addEventListener("submit", (e) => {
   } else {
     errorIcon3.style.opacity = "0";
     successIcon3.style.opacity = "1";
+    console.log(passwordInput.value);
     passwordError.removeAttribute("class");
     passwordError.innerHTML = "";
   }

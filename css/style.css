@@ -46,7 +46,7 @@ form {
     justify-content: center;
     align-items: center;
     gap: 6px;
-    width: 300px;
+    /* width: 300px; */
 }
 
 .nameError,
@@ -71,8 +71,8 @@ form input::placeholder {
 
 form div input {
     width: 100%;
-    max-width: 300px;
-    flex: 1;
+    /* max-width: 300px;
+    flex: 1; */
     height: 45px;
     border: none;
     outline: none;
@@ -125,7 +125,7 @@ form div .fa-circle-check {
     padding: 10px;
     font-size: 20px;
     background: #dde1e7;
-    border-radius: 25px;
+    border-radius: 6px;
     border: none;
     outline: none;
     cursor: pointer;
@@ -154,4 +154,15 @@ form div .fa-circle-check {
 .passConfirm {
     position: absolute;
     top: 30%;
+}
+
+.forgotPassDiv, .signUpDiv {
+    /* background: red; */
+    padding: 8px;
+    width: 100%;
+}
+
+#signUpLink, #resetPassLink {
+    text-decoration: none;
+    color: #3498db;
 }
