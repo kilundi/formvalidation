@@ -262,9 +262,9 @@ form.addEventListener("submit", (e) => {
     // alert("");
     passwordConfirm.value = "";
     errorMessage.innerHTML = `<div id="success" >Registered successfully</div>`;
-    setTimeout(() => {
+    /* setTimeout(() => {
       location.reload();
-    }, 2000);
+    }, 2000); */
 
     // selectElement.value = "";
     // const opacityReset = document.querySelector(".js-reset");
