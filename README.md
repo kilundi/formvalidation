@@ -14,6 +14,6 @@ This is a simple login form built with HTML, CSS, and JavaScript. The form inclu
 
 ### Images
 
-<img src="https://github.com/kilundi/formvalidation/assets/95399799/99ffce1b-01a6-4a16-baf9-9a5ef11c850c" width="800">
-<img src="https://github.com/kilundi/formvalidation/assets/95399799/933d9e70-b344-4e4b-b640-17406d490f60" width="800">
-<img src="https://github.com/kilundi/formvalidation/assets/95399799/510433db-8e26-4251-a995-6130cae2592c" width="800">
+ <img src="https://github.com/kilundi/formvalidation/assets/95399799/99ffce1b-01a6-4a16-baf9-9a5ef11c850c" width="800">
+    <img src="https://github.com/kilundi/formvalidation/assets/95399799/933d9e70-b344-4e4b-b640-17406d490f60" width="800">
+    <img src="https://github.com/kilundi/formvalidation/assets/95399799/510433db-8e26-4251-a995-6130cae2592c" width="800">
